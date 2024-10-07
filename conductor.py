@@ -23,6 +23,22 @@ def webhook():
     else:
         return "NO", 200
 
+
+# weblock
+@app.route("/weblock", methods=["POST"])
+def webhook():
+    if request.method == "POST":
+        if request.json["ref"] == "refs/heads/main":
+            #subprocess.call(["~/prod/paleomap3d/deployprod.sh"], shell=True)
+            subprocess.run("/bin/bash /home/x230/prod/weblock/deployprod.sh", shell=True)
+            return "Deployment triggered on weblock", 200
+        else:
+            return "Non main branch", 200
+        return "OK", 200
+    else:
+        return "NO", 200
+
+
 # Pharahobs Bot
 @app.route("/replaycode", methods=["POST"])
 def webhook():
