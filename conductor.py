@@ -11,7 +11,7 @@ print(os.getcwd())
 
 # paleomap3d
 @app.route("/paleomap3d", methods=["POST"])
-def webhook():
+def paleomap3d_webhook():
     if request.method == "POST":
         if request.json["ref"] == "refs/heads/main":
             #subprocess.call(["~/prod/paleomap3d/deployprod.sh"], shell=True)
@@ -26,10 +26,9 @@ def webhook():
 
 # weblock
 @app.route("/weblock", methods=["POST"])
-def webhook():
+def weblock_webhook():
     if request.method == "POST":
         if request.json["ref"] == "refs/heads/main":
-            #subprocess.call(["~/prod/paleomap3d/deployprod.sh"], shell=True)
             subprocess.run("/bin/bash /home/x230/prod/weblock/deployprod.sh", shell=True)
             return "Deployment triggered on weblock", 200
         else:
@@ -39,6 +38,7 @@ def webhook():
         return "NO", 200
 
 
+'''
 # Pharahobs Bot
 @app.route("/replaycode", methods=["POST"])
 def webhook():
@@ -52,7 +52,7 @@ def webhook():
         return "OK", 200
     else:
         return "NO", 200
-
+'''
 
 if __name__ == "__main__":
     print(f"listening on port {port}")
