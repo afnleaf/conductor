@@ -11,7 +11,7 @@ port = 9000
 #print(os.getcwd())
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(name) - %(levelname) - %(message)"
+    format="%(asctime)s - %(name) - %(levelname) - %(message)",
     filename="webhook_deployment.log"
 )
 logger = logging.getLogger(__name__)
